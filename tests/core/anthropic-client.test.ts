@@ -81,7 +81,7 @@ describe('AnthropicClient', () => {
 
       await client.searchSeiDocs('test query', task)
 
-      const calls = mockCreate.mock.calls as Array<[unknown]>
+      const calls = mockCreate.mock.calls as unknown as Array<[unknown]>
       if (calls.length > 0) {
         const callArgs = calls[calls.length - 1]?.[0] as {
           tools?: Array<{ allowed_domains?: string[] }>
@@ -137,7 +137,7 @@ describe('AnthropicClient', () => {
       expect(mockCreate).toHaveBeenCalledWith(
         expect.objectContaining({
           betas: ['code-execution-2025-05-22'],
-          tools: [{ type: 'code_execution', name: 'code_execution' }],
+          tools: [{ type: 'code_execution_20250522', name: 'code_execution' }],
         }),
       )
     })
@@ -161,7 +161,9 @@ describe('AnthropicClient', () => {
       await client.analyzeWithCodeExecution('data', task)
 
       // Check that no calls used the old tool type
-      const allCalls = [...mockCreate.mock.calls, ...mockStream.mock.calls] as Array<[unknown]>
+      const allCalls = [...mockCreate.mock.calls, ...mockStream.mock.calls] as unknown as Array<
+        [unknown]
+      >
 
       for (const call of allCalls) {
         const callData = call?.[0] as { tools?: Array<{ type?: string; name?: string }> }

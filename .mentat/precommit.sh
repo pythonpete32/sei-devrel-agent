@@ -25,4 +25,13 @@ fi
 echo "📝 Formatting code..."
 bun run format
 
+# Run TypeScript type checking
+echo "🔍 Running TypeScript type checking..."
+bun run typecheck
+
+if [ $? -ne 0 ]; then
+    echo "❌ TypeScript type checking failed. Please fix type errors manually."
+    exit 1
+fi
+
 echo "✅ All checks passed!"
