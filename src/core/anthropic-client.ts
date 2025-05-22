@@ -70,7 +70,7 @@ export class AnthropicClient {
         model,
         max_tokens: 4096,
         betas: ['code-execution-2025-05-22'],
-        tools: [{ type: 'code_execution' as any, name: 'code_execution' }] as any,
+        tools: [{ type: 'code_execution', name: 'code_execution' }],
         messages: [
           {
             role: 'user',
@@ -132,7 +132,7 @@ Focus on Sei's unique characteristics:
         this.log.info(text)
       })
 
-      stream.on('tool_use' as any, async (tool: any) => {
+      stream.on('tool_use', async (tool: { name: string; input?: { query?: string } }) => {
         if (tool.name === 'web_search') {
           spinner.text = `Searching: ${tool.input?.query}`
         } else if (tool.name === 'code_execution') {

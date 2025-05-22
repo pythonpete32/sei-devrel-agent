@@ -1,11 +1,17 @@
-import { describe, expect, it } from 'bun:test'
+import { beforeAll, describe, expect, it } from 'bun:test'
 import { SeiDebugCommands } from '../../src/commands/debug-commands.js'
 
 describe('SeiDebugCommands', () => {
   // Note: These tests would require mocking the Anthropic API
   // For now, we'll test the validation logic and basic functionality
 
-  const debugCommands = new SeiDebugCommands()
+  let debugCommands: SeiDebugCommands
+
+  beforeAll(() => {
+    // Set a dummy API key for testing
+    process.env.ANTHROPIC_API_KEY = 'test-key'
+    debugCommands = new SeiDebugCommands()
+  })
 
   describe('validation', () => {
     it('should validate transaction hash format in debugTransaction', async () => {
