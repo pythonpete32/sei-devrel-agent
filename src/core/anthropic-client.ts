@@ -132,17 +132,6 @@ Focus on Sei's unique characteristics:
         this.log.info(text)
       })
 
-      stream.on(
-        'content_block_delta',
-        async (tool: { name?: string; input?: { query?: string } }) => {
-          if (tool.name === 'web_search') {
-            spinner.text = `Searching: ${tool.input?.query}`
-          } else if (tool.name === 'code_execution') {
-            spinner.text = 'Executing Python analysis...'
-          }
-        },
-      )
-
       const finalMessage = await stream.finalMessage()
       spinner.succeed('Analysis complete')
 
