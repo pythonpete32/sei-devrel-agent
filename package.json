@@ -9,7 +9,13 @@
     "dev": "bun run src/index.ts",
     "build": "bun build src/index.ts --outdir dist --target bun",
     "test": "bun test",
-    "start": "bun run src/index.ts"
+    "start": "bun run src/index.ts",
+    "lint": "biome check --write src tests",
+    "format": "biome format --write src tests",
+    "format:check": "biome format src tests",
+    "format:write": "biome format --write src tests",
+    "check": "biome check src tests",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "latest",
@@ -18,6 +24,7 @@
     "zod": "latest"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "@types/bun": "latest",
     "@types/node": "latest",
     "bun-types": "latest"
