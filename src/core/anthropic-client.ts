@@ -33,7 +33,7 @@ export class AnthropicClient {
         max_tokens: 4096,
         tools: [
           {
-            type: "web_search",
+            type: "web_search_20250305",
             name: "web_search",
             max_uses: Math.min(task.estimatedSearches || 3, 5),
             allowed_domains: [
@@ -116,9 +116,10 @@ Focus on Sei's unique characteristics:
     const spinner = ora("Analyzing issue...").start();
 
     try {
-      const stream = await this.anthropic.messages.stream({
+      const stream = await this.anthropic.beta.messages.stream({
         model,
         max_tokens: 4096,
+        betas: ["code-execution-2025-05-22"],
         messages: [
           {
             role: "user",
@@ -133,8 +134,7 @@ Focus on Sei's unique characteristics:
           },
         ],
         tools: [
-          { type: "web_search", name: "web_search" },
-          { type: "code_execution" },
+          { type: "web_search_20250305", name: "web_search" },
         ],
       });
 
