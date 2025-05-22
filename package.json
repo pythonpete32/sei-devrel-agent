@@ -1,0 +1,36 @@
+{
+  "name": "sei-devrel-agent",
+  "version": "1.0.0",
+  "description": "Advanced Sei Protocol debugging agent using Anthropic SDK",
+  "module": "src/index.ts",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run src/index.ts",
+    "build": "bun build src/index.ts --outdir dist --target bun",
+    "test": "bun test",
+    "start": "bun run src/index.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "latest",
+    "consola": "^3.4.2",
+    "ora": "^8.2.0",
+    "zod": "latest"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "latest",
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "keywords": [
+    "sei",
+    "blockchain",
+    "debugging",
+    "anthropic",
+    "claude",
+    "evm"
+  ]
+}

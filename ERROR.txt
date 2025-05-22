@@ -1,0 +1,47 @@
+❯ bun dev debug "curl --request POST --url https://sleek-icy-sanctuary.sei-pacific.quiknode.pro/<redacted> --header 'Content-Type: application/json' --header 'x-qn-height: 78309999' --data '{"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["0x4AAEA6F",true], "id":1}' With this error: "message": "could not find block for height 826401374464"
+∙ 
+∙ "
+$ bun run src/index.ts debug "curl --request POST --url https://sleek-icy-sanctuary.sei-pacific.quiknode.pro/<redacted> --header 'Content-Type: application/json' --header 'x-qn-height: 78309999' --data '{jsonrpc:2.0,method:eth_getBlockByNumber,params:[0x4AAEA6F,true], id:1}' With this error: message: could" not find block for height "826401374464
+
+"
+ℹ Anthropic client initialized                                                                                      anthropic-client 6:14:28 PM
+ℹ Sei Debug Agent initialized { rpcEndpoint: 'https://evm-rpc.sei-apis.com',                                         sei-debug-agent 6:14:28 PM
+  network: 'Sei EVM',
+  blockTime: '400ms' }
+ℹ Starting general debug session...                                                                                    sei-debug-cli 6:14:28 PM
+ℹ Starting general issue debug                                                                                    sei-debug-commands 6:14:28 PM
+⠋ Starting debug session...ℹ Selected Claude Opus 4 for complex task                                                                             model-selector 6:14:28 PM
+ℹ Selected Claude Opus 4 for complex task                                                                             model-selector 6:14:28 PM
+ℹ Cost estimate { model: 'claude-opus-4-20250514',                                                                    model-selector 6:14:28 PM
+  searchCost: '$0.0200',
+  tokenCost: '$0.2250',
+  total: '$0.2450' }
+ℹ Selected Claude Opus 4 for complex task                                                                             model-selector 6:14:28 PM
+✖ Debug failed
+
+[anthropic-client 6:14:29 PM]  ERROR  Interactive debug error 400 {"type":"error","error":{"type":"invalid_request_error","message":"tools.0: Input tag 'web_search' found using 'type' does not match any of the expected tags: 'bash_20250124', 'custom', 'text_editor_20250124', 'text_editor_20250429', 'web_search_20250305'"}}
+
+    at new AnthropicError (unknown)
+    at new APIError (node_modules/@anthropic-ai/sdk/core/error.mjs:7:9)
+    at new BadRequestError (unknown)
+    at generate (node_modules/@anthropic-ai/sdk/core/error.mjs:37:24)
+    at <anonymous> (node_modules/@anthropic-ai/sdk/client.mjs:296:30)
+    at processTicksAndRejections (native:7:39)
+
+✖ Debug session failed
+
+[sei-debug-agent 6:14:29 PM]  ERROR  Debug session error 400 {"type":"error","error":{"type":"invalid_request_error","message":"tools.0: Input tag 'web_search' found using 'type' does not match any of the expected tags: 'bash_20250124', 'custom', 'text_editor_20250124', 'text_editor_20250429', 'web_search_20250305'"}}
+
+    at new AnthropicError (unknown)
+    at new APIError (node_modules/@anthropic-ai/sdk/core/error.mjs:7:9)
+    at new BadRequestError (unknown)
+    at generate (node_modules/@anthropic-ai/sdk/core/error.mjs:37:24)
+    at <anonymous> (node_modules/@anthropic-ai/sdk/client.mjs:296:30)
+    at processTicksAndRejections (native:7:39)
+
+
+ ERROR  Error occurred { message:                                                                                         cli-helpers 6:14:29 PM
+   400 {"type":"error","error":{"type":"invalid_request_error","message":"tools.0: Input tag 'web_search' found using 'type' does not match any of the expected tags: 'bash_20250124', 'custom', 'text_editor_20250124', 'text_editor_20250429', 'web_search_20250305'"}},
+  timestamp: '2025-05-22T18:14:29.406Z' }
+
+(.venv) 
